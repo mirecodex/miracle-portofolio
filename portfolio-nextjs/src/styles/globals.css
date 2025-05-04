@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-900 text-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply text-orange-500;
+}
+
+a {
+    @apply text-orange-400 hover:text-orange-300;
+}
+
+button {
+    @apply bg-orange-500 text-white hover:bg-orange-400;
+}
+
+.card {
+    @apply bg-gray-800 rounded-lg shadow-lg p-6;
+}
+
+.footer {
+    @apply bg-gray-800 text-gray-400 py-4 text-center;
+}
+
+.header {
+    @apply bg-gray-900 text-white py-4;
+}
+
+.navbar {
+    @apply flex justify-between items-center;
+}
+
+.hero {
+    @apply bg-gradient-to-r from-orange-500 to-gray-800 text-white py-20 text-center;
+}
+
+.project-showcase {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.contact {
+    @apply bg-gray-800 p-8 rounded-lg;
+}

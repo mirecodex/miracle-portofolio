@@ -1,0 +1,426 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light mode variables */
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 17, 24, 39;
+
+  --background: 0 0% 100%;
+  --foreground: 224 71.4% 4.1%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 224 71.4% 4.1%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71.4% 4.1%;
+
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 220 14.3% 95.9%;
+  --secondary-foreground: 220.9 39.3% 11%;
+
+  --muted: 220 14.3% 95.9%;
+  --muted-foreground: 220 8.9% 46.1%;
+
+  --accent: 220 14.3% 95.9%;
+  --accent-foreground: 220.9 39.3% 11%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 224.3 76.3% 48%;
+  --radius: 0.5rem;
+
+  /* Custom colors - darker theme */
+  --dark-50: 220 5% 96%;
+  --dark-100: 220 5% 89%;
+  --dark-200: 220 5% 80%;
+  --dark-300: 220 5% 69%;
+  --dark-400: 220 5% 58%;
+  --dark-500: 220 5% 45%;
+  --dark-600: 220 5% 36%;
+  --dark-700: 220 5% 27%;
+  --dark-800: 220 5% 18%;
+  --dark-900: 220 5% 10%;
+}
+
+/* Dark mode variables */
+:root[class~="dark"] {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%; /* blue color */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 48%;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--dark-800);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--primary-700);
+  border-radius: 6px;
+  border: 3px solid var(--dark-800);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-600);
+}
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-white;
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 relative z-10;
+  }
+
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .blue-gradient {
+    @apply bg-gradient-to-br from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24;
+  }
+
+  .heading-xl {
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  .blue-gradient {
+    background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shine 4s linear infinite;
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-md font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white;
+  }
+
+  /* Add bottom padding for fixed navbar */
+  .body-padding {
+    @apply pb-20;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .orange-glow {
+    @apply relative;
+    position: relative;
+    z-index: 1;
+  }
+
+  .orange-glow::after {
+    content: "";
+    @apply absolute top-0 left-0 w-full h-full bg-primary-500 opacity-30 blur-2xl -z-10;
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-primary-500);
+    z-index: -1;
+    filter: blur(30px);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+  }
+
+  .orange-glow:hover::after {
+    opacity: 0.5;
+  }
+
+  .neo-glass {
+    @apply backdrop-blur-lg bg-dark-800/50 border border-white/10;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-lg bg-dark-800/70 border border-white/10 shadow-lg;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-effect::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    transition: transform 1s ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .shine-effect:hover::after {
+    transform: translateX(100%) rotate(30deg);
+    opacity: 1;
+    transition-duration: 1s;
+  }
+
+  /* Enhanced glassmorphism */
+  .glassmorphism {
+    @apply bg-dark-800/60 backdrop-blur-md border border-dark-700/50;
+  }
+
+  /* Modern glassmorphism */
+  .glassmorphism-dark {
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glassmorphism-light {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Animated glow border */
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, #f97316, transparent, #f97316);
+    border-radius: inherit;
+    z-index: -1;
+    animation: rotate-gradient 3s linear infinite;
+  }
+
+  /* Custom shapes */
+  .rounded-hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  /* 3D card effects */
+  .perspective {
+    perspective: 1500px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Glowing border effect */
+  .glow-border-hover {
+    position: relative;
+  }
+
+  .glow-border-hover::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(
+      45deg,
+      var(--primary),
+      rgba(255, 255, 255, 0),
+      var(--primary)
+    );
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glow-border-hover:hover::after {
+    opacity: 1;
+  }
+
+  /* Hover effects */
+  .hover-glow {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+
+  /* Light/dark mode styles */
+  .light-theme {
+    @apply bg-light-100 text-dark-900;
+  }
+
+  .dark-theme {
+    @apply bg-dark-900 text-white;
+  }
+
+  /* Light mode colors */
+  .light-mode {
+    color: theme("colors.dark.900");
+    background-color: theme("colors.light.100");
+  }
+
+  /* Dark mode colors */
+  .dark-mode {
+    color: theme("colors.light.100");
+    background-color: theme("colors.dark.900");
+  }
+
+  /* Fix for text colors in light/dark modes */
+  .light .text-content {
+    color: theme("colors.dark.900");
+  }
+
+  .dark .text-content {
+    color: theme("colors.light.50");
+  }
+
+  /* Additional styles for game section */
+  @keyframes glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.7));
+    }
+    50% {
+      filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.9));
+    }
+  }
+
+  .glow-effect {
+    animation: glow 2s infinite;
+  }
+}
+
+@keyframes tilt {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+.animate-tilt {
+  animation: tilt 10s infinite linear;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Terminal typing animation */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}

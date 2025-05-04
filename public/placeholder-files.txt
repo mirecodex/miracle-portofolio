@@ -1,0 +1,28 @@
+This portfolio requires the following image files to be added:
+
+1. /profile-alex.jpg - Professional headshot for the hero section
+2. /about-image.jpg - Professional working image for about section
+
+3. Projects images:
+- /projects/ecommerce-platform.jpg
+- /projects/analytics-dashboard.jpg
+- /projects/social-app.jpg
+- /projects/finance-tracker.jpg
+- /projects/cms-system.jpg
+- /projects/weather-app.jpg
+
+4. Testimonial images:
+- /testimonials/emma-thompson.jpg
+- /testimonials/michael-johnson.jpg
+- /testimonials/sarah-williams.jpg
+- /testimonials/david-chen.jpg
+
+5. PWA Icons:
+- /favicon.ico
+- /icon-192.png
+- /icon-512.png
+
+6. OG Image:
+- /images/og-image.jpg
+
+Please create or add these images to complete the portfolio.
